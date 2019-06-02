@@ -2,7 +2,7 @@
  * File: Engine_Stencil.js
  * -for drawing objects through a stencil
  * -uses any object that has a draw function
- *      (have tested with regular renderables and UI renderables)
+ *      (have tested with regular, texture, and sprite renderables and their UI counterparts)
  *      
  *  Usage:
  *       drawing to stencil buffer: clear/begin/end drawing to stencil buffer
@@ -19,18 +19,18 @@
  *        
  *        renderable2.draw(yourCamera);      // <-- not stencil culled
  *        
- *        beginStencilCulling();             // from this point on, nothing can be drawn into renderable1's shape-area
- *            renderable3.draw(yourCamera);  // cannot draw into renderable1's shape area in the frame buffer
+ *        beginStencilCulling();             // from this point on, anything drawn will be into renderable's shape/area
+ *            renderable3.draw(yourCamera);  // can only draw into renderable's shape area in the frame buffer
  *        endStencilCulling();
  *        
  *        renderable4.draw(yourCamera);      // <-- not stencil culled
  *        
- *        beginDrawingToStencilBuffer();     // enable stencil drawing again to add more area to not to draw areas
+ *        beginDrawingToStencilBuffer();     // enable stencil drawing again to add more area to  draw areas
  *            renderableA.draw(yourCamera);
  *        endDrawingToStencilBuffer();
  *        
- *        beginStencilCulling();             // from this point on, nothing can be drawn into renderable1's or renderableA's shape-area
- *            renderableB.draw(yourCamera);  // cannot draw into renderable1's or renderableA's shape area in the frame buffer
+ *        beginStencilCulling();             // from this point on, anything drawn will be into renderable's and renderableA's shape/area
+ *            renderableB.draw(yourCamera);  // can only draw into renderable's and renderableA's shape area in the frame buffer
  *        endStencilCulling();
  *        
  */
@@ -104,7 +104,7 @@ gEngine.Stencil = (function () {
     
     /**
      * Begins stencil culling test. The stencil buffer should have already been drawn to with beginDrawToStencilBuffer() and endDrawToStencilBuffer(). The previous
-     * drawn renderables form the "stencil" where no renderable will be drawn into in between beginStencilCulling() and endStencilCullin()
+     * drawn renderables form the "stencil" where the renderable(s) will be drawn into between beginStencilCulling() and endStencilCullin()
      * @returns {void}
      */
     var beginStencilCulling = function() {
