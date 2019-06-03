@@ -19,8 +19,8 @@
  *        
  *        renderable2.draw(yourCamera);      // <-- not stencil culled
  *        
- *        beginStencilCulling();             // from this point on, anything drawn will be into renderable's shape/area
- *            renderable3.draw(yourCamera);  // can only draw into renderable's shape area in the frame buffer
+ *        beginStencilCulling();             // from this point on, anything drawn will be into renderable1's shape/area
+ *            renderable3.draw(yourCamera);  // can only draw into renderable1's shape area in the frame buffer
  *        endStencilCulling();
  *        
  *        renderable4.draw(yourCamera);      // <-- not stencil culled
@@ -30,7 +30,7 @@
  *        endDrawingToStencilBuffer();
  *        
  *        beginStencilCulling();             // from this point on, anything drawn will be into renderable's and renderableA's shape/area
- *            renderableB.draw(yourCamera);  // can only draw into renderable's and renderableA's shape area in the frame buffer
+ *            renderableB.draw(yourCamera);  // can only draw into renderable1's and renderableA's shape area in the frame buffer
  *        endStencilCulling();
  *        
  */
